@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Form from "../forms/form"
 
 
 
@@ -9,8 +10,26 @@ async function createDeck() {
 }
 
 async function getCards(deckId) {
-    const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=52`)
+    const response = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
     return await response.json()
+}
+
+const CardList = (props) => {
+    return (
+        <ul>
+            {
+                props.cards.map((card, index) => {
+                    return (
+                        <li key={index}>
+                            <img src={card.image} alt={card.value} />
+                            <p>{card.value} {card.suit}</p>
+                        </li>
+                    )
+                })
+            }
+        </ul>
+    )
+
 }
 
 const DeckOfCards = () => {
@@ -30,58 +49,20 @@ const DeckOfCards = () => {
         }
         fetchData()
     }, [])
+
+    const addCard = (newCard) => {
+        console.log(newCard)
+        setDeck({
+            cards: [...deck.cards, newCard]
+        })
+    }
+
     return (
         <section>
-            <ul>
-                {
-                    deck.cards.map((card, index) => {
-                        return (
-                            <li key={index}>
-                                <img src={card.image} alt={card.value} />
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+            <Form addCard={addCard} />
+            {deck.cards.length > 0 ? <CardList cards={deck.cards} /> : "No cards to show"}
         </section>
     )
 }
-// constructor() {
-//     console.log('constructor')
-//     super()
-//     this.state = {
-//         cards: []
-//     }
-// }
-
-// async componentDidMount() {
-//     console.log('didmount')
-//     const deckId = await createDeck()
-//     const data = await getCards(deckId)
-
-//     this.setState({
-//         cards: data.cards
-//     })
-// }
-
-// render() {
-//     console.log('render')
-//     return (
-//         <section>
-//             <ul>
-//                 {
-//                     this.state.cards.map((card, index) => {
-//                         return(
-//                             <li key={index}>
-//                                 <img src={card.image} alt={card.value} />
-//                             </li>
-//                         )
-//                     })
-//                 }
-//             </ul>
-//         </section>
-//     )
-// }
-
 
 export default DeckOfCards
