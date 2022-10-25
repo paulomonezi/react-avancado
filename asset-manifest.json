@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-avancado/static/css/main.22d310a0.css",
-    "main.js": "/react-avancado/static/js/main.98ed78cf.js",
+    "main.js": "/react-avancado/static/js/main.f55f34be.js",
     "static/media/panel.jpg": "/react-avancado/static/media/panel.d4444a83f4a661ae9975.jpg",
     "index.html": "/react-avancado/index.html",
     "main.22d310a0.css.map": "/react-avancado/static/css/main.22d310a0.css.map",
-    "main.98ed78cf.js.map": "/react-avancado/static/js/main.98ed78cf.js.map"
+    "main.f55f34be.js.map": "/react-avancado/static/js/main.f55f34be.js.map"
   },
   "entrypoints": [
     "static/css/main.22d310a0.css",
-    "static/js/main.98ed78cf.js"
+    "static/js/main.f55f34be.js"
   ]
 }
